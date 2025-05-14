@@ -45,7 +45,7 @@ body {
   display: inline-block;
   padding: 10px;
   border-radius: 12px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .nav-button:hover {
@@ -60,7 +60,7 @@ body {
   object-fit: cover;
   object-position: center;
   filter: invert(0%);
-  transition: filter 0.3s;
+  transition: filter 0.2s;
 }
 
 .nav-button:active {
@@ -75,4 +75,10 @@ body {
   width: 37px;
   height: 37px;
   border-radius: 14px;
+}
+
+#content {
+  margin-left:5%;
+  padding:1px 16px;
+  height:1000px;
 }
