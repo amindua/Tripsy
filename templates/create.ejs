@@ -11,72 +11,83 @@
 
 <body>
   <nav class="sidebar">
-  <ul class="nav-group">
-    <li>
-      <a href="/" class="nav-button logo-button">
-        <img src="/logo.png" alt="Logo Home" />
-      </a>
-    </li>
-    <li>
-      <a href="/" class="nav-button">
-        <img src="/home.png" alt="Home" />
-      </a>
-    </li>
-    <li>
-      <a href="/create" class="nav-button active">
-        <img src="/create.png" alt="Create" />
-      </a>
-    </li>
-  </ul>
-  <ul class="logout-group">
-    <li>
-      <a href="#" class="nav-button">
-        <img src="/logout.png" alt="Log out" />
-      </a>
-    </li>
-  </ul>
-</nav>
-<div id="content">
-  <h1>Create Trip</h1>
-    <form action="http://localhost:5001/published" method="post">
-        <fieldset>
-            <b>Title: </b><input type="text" id="title" name="title"><br><br>
-            <b>Origin: </b><input type="text" id="origin" name="origin">
-            <b>Destination: </b><input type="text" id="destination" name="destination"><br><br>
-            <b>Date: </b><input type="date" id="origin" name="origin"><br><br>
-            <label for="number-select-adults">Adults (18+):</label>
+    <ul class="nav-group">
+      <li>
+        <a href="/" class="nav-button logo-button">
+          <img src="/logo.png" alt="Logo Home" />
+        </a>
+      </li>
+      <li>
+        <a href="/" class="nav-button">
+          <img src="/home.png" alt="Home" />
+        </a>
+      </li>
+      <li>
+        <a href="/create" class="nav-button active">
+          <img src="/create.png" alt="Create" />
+        </a>
+      </li>
+    </ul>
+    <ul class="logout-group">
+      <li>
+        <a href="#" class="nav-button">
+          <img src="/logout.png" alt="Log out" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div id="content">
+    <form action="/published" method="post">
+      <div class="header-row">
+        <h1>Create Trip</h1>
+        <button type="submit" class="publish-button">Publish</button>
+      </div>
+
+      <fieldset class="titles">
+        TITLE: <input type="text" id="title" name="title"><br><br>
+
+        ORIGIN: <input type="text" id="origin" name="origin"><br><br>
+
+        DESTINATION: <input type="text" id="destination" name="destination"><br><br>
+
+        DATE: <input type="date" id="date" name="date"><br><br>
+
+        <div class="age-group">
+          <div class="age-field">
+            <label for="number-select-adults">ADULTS (18+):</label>
             <select id="number-select-adults" name="number-select-adults">
-            <option value="1">1</option>
-            <option value="2" selected>2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-          </select>
-
-            <label for="number-select-children">Children:</label>
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+          <div class="age-field">
+            <label for="number-select-children">CHILDREN:</label>
             <select id="number-select-children" name="number-select-children">
-            <option value="0" selected>0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-          <br><br>
+              <option value="0" selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
 
-            <b>Notes: </b><br><textarea rows="8" cols="70" id="box" name="box"></textarea>
-        </fieldset>
         <br>
-        <input type="reset"> <input type="submit" value="Publish"> 
+        NOTES: <br>
+        <textarea rows="8" id="box" name="box"></textarea>
+        <br><br>
+      </fieldset>
     </form>
-    <hr>
-
-</div>
-
+  </div>
 
 </body>
 
