@@ -36,6 +36,47 @@
     </li>
   </ul>
 </nav>
+<div id="content">
+  <h1>Create Trip</h1>
+    <form action="http://localhost:5001/published" method="post">
+        <fieldset>
+            <b>Title: </b><input type="text" id="title" name="title"><br><br>
+            <b>Origin: </b><input type="text" id="origin" name="origin">
+            <b>Destination: </b><input type="text" id="destination" name="destination"><br><br>
+            <b>Date: </b><input type="date" id="origin" name="origin"><br><br>
+            <label for="number-select-adults">Adults (18+):</label>
+            <select id="number-select-adults" name="number-select-adults">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+          </select>
+
+            <label for="number-select-children">Children:</label>
+            <select id="number-select-children" name="number-select-children">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <br><br>
+
+            <b>Notes: </b><br><textarea rows="8" cols="70" id="box" name="box"></textarea>
+        </fieldset>
+        <br>
+        <input type="reset"> <input type="submit" value="Publish"> 
+    </form>
+    <hr>
+
+</div>
+
 
 </body>
 
