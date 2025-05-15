@@ -1,37 +1,31 @@
 body {
   margin: 0;
   font-family: sans-serif;
-  background-color: #f9f9f9;
+  background-color: white;
 }
 
 .sidebar {
   width: 5%;
   height: 100vh;
-  background-color: #ffffff;
-  border-right: 1px solid #e0e0e0;
+  background-color: white;
+  border-right: 1px solid #cecece;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
-  justify-content: space-between; /* separates top and bottom groups */
+  justify-content: space-between;
 }
 
 .nav-group,
-.logout-group {
-  list-style-type: none;
+.logout-group,
+.sidebar ul {
+  list-style: none;
   padding: 0;
   margin: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.sidebar ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
 }
 
 .sidebar li {
@@ -41,17 +35,24 @@ body {
   justify-content: center;
 }
 
+/* Shared button styles */
 .nav-button {
   display: inline-block;
   padding: 10px;
   border-radius: 12px;
   transition: all 0.2s ease-in-out;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .nav-button:hover {
   background-color: #f5f4f0;
 }
 
+.nav-button:active {
+  transform: scale(0.90);
+}
 
 .nav-button img {
   width: 36px;
@@ -63,10 +64,6 @@ body {
   transition: filter 0.2s;
 }
 
-.nav-button:active {
-  transform: scale(0.90);
-}
-
 .nav-button.active img {
   filter: invert(100%);
 }
@@ -75,10 +72,69 @@ body {
   width: 37px;
   height: 37px;
   border-radius: 14px;
+  background-color: #E03473;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.header-row h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
 }
 
 #content {
-  margin-left:5%;
-  padding:1px 16px;
-  height:1000px;
+  width: 25%;
+  margin: 0 auto;
+  padding-top: 3%;
 }
+
+table {
+  width: 100%;
+  height: 500px;
+  border: 1.5px solid #E03473;
+  border-radius: 12px;
+  background-color: white;
+  table-layout: fixed;
+  padding: 2.25% 2.25% 0.75%;
+}
+
+table td {
+  padding: 6px;
+  padding-bottom: 12px;
+  
+}
+
+table td:nth-child(2),
+table th:nth-child(2) {
+  width: 65px;
+}
+
+.titles {
+  font-size: small;
+  padding-top: 12px;
+}
+
+.location {
+  font-size: large;
+}
+
+.top {
+  font-size: large;
+}
+
+.emoji {
+  font-size: xx-large;
+  color: #E03473;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* * {
+  outline: 1px solid red;
+} */
