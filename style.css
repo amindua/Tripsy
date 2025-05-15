@@ -101,11 +101,12 @@ table {
   border-radius: 12px;
   background-color: white;
   table-layout: fixed;
-  padding: 2.25% 2.25% 0.75%;
+  padding: 4% 2.25% 0.75%;
 }
 
 table td {
   padding: 6px;
+  padding-top: 0px;
   padding-bottom: 12px;
   
 }
@@ -118,6 +119,7 @@ table th:nth-child(2) {
 .titles {
   font-size: small;
   padding-top: 12px;
+  padding-bottom: 0px;
 }
 
 .location {
