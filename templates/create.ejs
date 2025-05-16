@@ -2,41 +2,107 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tripsy</title>
-  <link rel="stylesheet" href="/style.css" type="text/css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/style.css" type="text/css" />
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
   <nav class="sidebar">
-  <ul class="nav-group">
-    <li>
-      <a href="/" class="nav-button logo-button">
-        <img src="/logo.png" alt="Logo Home" />
-      </a>
-    </li>
-    <li>
-      <a href="/" class="nav-button">
-        <img src="/home.png" alt="Home" />
-      </a>
-    </li>
-    <li>
-      <a href="/create" class="nav-button active">
-        <img src="/create.png" alt="Create" />
-      </a>
-    </li>
-  </ul>
-  <ul class="logout-group">
-    <li>
-      <a href="#" class="nav-button">
-        <img src="/logout.png" alt="Log out" />
-      </a>
-    </li>
-  </ul>
-</nav>
+    <ul class="nav-group">
+      <li>
+        <a href="/" class="nav-button logo-button">
+          <img src="/images/logo.png" alt="Logo Home" />
+        </a>
+      </li>
+      <li>
+        <a href="/" class="nav-button">
+          <img src="/images/home.png" alt="Home" />
+        </a>
+      </li>
+      <li>
+        <a href="/create" class="nav-button active">
+          <img src="/images/create.png" alt="Create" />
+        </a>
+      </li>
+    </ul>
+    <ul class="logout-group">
+      <li>
+        <a href="/logout" class="nav-button">
+          <img src="/images/logout.png" alt="Log out" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div id="content">
+    <% if (typeof error !== 'undefined') { %>
+      <p class="error" style="color:red; margin-bottom:1rem;">
+        <%= error %>
+      </p>
+    <% } %>
+    <form class = "create-form" action="/published" method="POST">
+      <div class="header-row">
+        <h1>Create Trip</h1>
+        <button type="submit" class="publish-button">Publish</button>
+      </div>
+
+      <fieldset class="titles">
+        TITLE: <input type="text" id="title" name="title" required><br><br>
+
+        ORIGIN: <input type="text" id="origin" name="origin" required><br><br>
+
+        DESTINATION: <input type="text" id="destination" name="destination" required><br><br>
+
+        DATE ARRIVAL: <input type="date" id="date" name="date" required><br><br>
+
+        DATE DEPARTURE: <input type="date" id="date2" name="date2" required><br><br>
+
+        <div class="age-group">
+          <div class="age-field">
+            <label for="adults">ADULTS (18+):</label>
+            <select id="adults" name="adults" required>
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+            </select>
+          </div>
+          <div class="age-field">
+            <label for="children">CHILDREN:</label>
+            <select id="children" name="children" required>
+              <option value="0" selected>0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+
+        <br>
+        NOTES: <br>
+        <textarea rows="8" id="notes" name="notes"></textarea>
+        <br><br>
+      </fieldset>
+    </form>
+  </div>
 
 </body>
+<script>
+	window.onsubmit = main;
+
+	function main() {
+		let confirmation = "Are you sure you want to publish your trip?\nYou will not be able to change your information once submitted.";
+    	return window.confirm(confirmation);
+	}
+</script>
 
 </html>
