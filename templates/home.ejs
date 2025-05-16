@@ -1,49 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tripsy</title>
   <link rel="stylesheet" href="/style.css" type="text/css">
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
   <nav class="sidebar">
-  <ul class="nav-group">
-    <li>
-      <a href="/" class="nav-button logo-button">
-        <img src="/logo.png" alt="Logo Home" />
-      </a>
-    </li>
-    <li>
-      <a href="/" class="nav-button active">
-        <img src="/home.png" alt="Home" />
-      </a>
-    </li>
-    <li>
-      <a href="/create" class="nav-button">
-        <img src="/create.png" alt="Create" />
-      </a>
-    </li>
-  </ul>
-  <ul class="logout-group">
-    <li>
-      <a href="#" class="nav-button">
-        <img src="/logout.png" alt="Log out" />
-      </a>
-    </li>
-  </ul>
-</nav>
+    <ul class="nav-group">
+      <li>
+        <a href="/" class="nav-button logo-button">
+          <img src="/images/logo.png" alt="Logo Home" />
+        </a>
+      </li>
+      <li>
+        <a href="/" class="nav-button active">
+          <img src="/images/home.png" alt="Home" />
+        </a>
+      </li>
+      <li>
+        <a href="/create" class="nav-button">
+          <img src="/images/create.png" alt="Create" />
+        </a>
+      </li>
+    </ul>
+    <ul class="logout-group">
+      <li>
+        <a href="/logout" class="nav-button">
+          <img src="/images/logout.png" alt="Log out" />
+        </a>
+      </li>
+    </ul>
+  </nav>
 
-<div id="content">
-  <h1>gurt</h1>
-  <h1>test</h1>
-  <h1>yo</h1>
+  <div id="content">
+    <h1>Hi, <%= firstName %>!</h1>
+    <h2 class = "trip-title">Here are your trips:</h2>
+    <% if (trips && trips.length) { %>
+      <div class="trip-list">
+        <% trips.forEach(trip => { %>
+          <div class="trip-card">
+            <div class="header-row">
+              <h1><%= trip.title %></h1>
+              <form
+                class="delete-form"
+                action="/delete/<%= trip._id %>"
+                method="post"
+                onsubmit="return confirm('Are you sure you want to delete this trip?');"
+              >
+                <button class="nav-button">
+                  <img src="/images/delete.png" alt="Delete Table" />
+                </button>
+              </form>
+            </div>
 
-</div>
-
+            <table>
+              <tr>
+                <td class="location"><%= trip.origin %></td>
+                <td class="emoji">&#9992;</td>
+                <td class="location" colspan="2" style="text-align: right;"><%= trip.destination %></td>
+              </tr>
+              <tr>
+                <th class="titles">ARRIVAL</th>
+                <th class="titles">DEPARTURE</th>
+                <th class="titles">ADULTS</th>
+                <th class="titles">CHILDREN</th>
+              </tr>
+              <tr>
+                <td class = "no-wrap"><%= trip.date %></td>
+                <td class = "no-wrap"><%= trip.date2 %></td>
+                <td class = "info"><%= trip.adults %></td>
+                <td class = "info"><%= trip.children %></td>
+              </tr>
+              <tr>
+                <td class="titles">NOTES</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td colspan="4"><%= trip.notes %></td>
+              </tr>
+              <tr>
+                <td class="titles">HOTELS</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <ul>
+                    <% trip.hotels.forEach(h => { %>
+                      <li> 
+                        <a href="<%= h.web_url %>" class="nav-button" target="_blank" rel="noopener noreferrer">
+                          <%= h.name %>
+                        </a>
+                      </li>
+                    <% }) %>
+                </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="titles">RESTAURANTS</td>
+                <td colspan="2"></td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <ul>
+                    <% trip.restaurants.forEach(h => { %>
+                      <li> 
+                        <a href="<%= h.web_url %>" class="nav-button" target="_blank" rel="noopener noreferrer">
+                          <%= h.name %>
+                        </a>
+                      </li>
+                    <% }) %>
+                </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="titles">ATTRACTIONS</td>
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <td colspan="4">
+                  <ul>
+                    <% trip.attractions.forEach(h => { %>
+                      <li> 
+                        <a href="<%= h.web_url %>" class="nav-button" target="_blank" rel="noopener noreferrer">
+                          <%= h.name %>
+                        </a>
+                      </li>
+                    <% }) %>
+                </ul>
+                </td>
+              </tr>
+            </table>
+          </div>
+        <% }) %>
+      </div>
+    <% } else { %>
+      <p>No trips yet. <a href="/create">Create your first trip</a>.</p>
+    <% } %>
+  </div>
 </body>
-
 </html>

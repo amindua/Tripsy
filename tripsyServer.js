@@ -1,25 +1,42 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const {MongoClient, ServerApiVersion} = require("mongodb");
 const path = require("path");
-const app = express();
+const session = require("express-session");
 
+const app = express();
 require("dotenv").config({ path: path.resolve(__dirname, ".env") });
 
-const url = 'https://api.content.tripadvisor.com/api/v1/location/search?key=7B4283C32F444523A9449EF36E9976FE&searchQuery=miami&category=hotels&language=en';
-const options = {method: 'GET', headers: {accept: 'application/json'}};
+app.use(session({
+  secret: process.env.SESSION_SECRET || "a very secret key",
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 1000 * 60 * 60 } 
+}));
 
-fetch(url, options)
-  .then(res => res.json())
-  .then(json => {
-    const locations = json.data;
+app.use(express.static(path.join(__dirname, "public")));
 
-    locations.forEach(location => {
-      const id = location.location_id;
-      const name = location.name;
-      const address = location.address_obj?.street1;
+app.set("view engine", "ejs");
+app.set("views", path.resolve(__dirname, "templates"));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-      console.log(`ID: ${id}, Name: ${name}, Address: ${address}, Rating: ${rating}`);
-    });
-  })
-  .catch(err => console.error(err));
+const { MongoClient, ServerApiVersion } = require("mongodb");
+
+const authRouter = require(path.join(__dirname, 'routes', 'auth'));
+app.use('/', authRouter);
+
+const mainRouter = require(path.join(__dirname, 'routes', 'main'));
+app.use('/', mainRouter);
+
+app.get("/", (req, res) => {
+    res.render("home");
+});
+
+app.get("/create", (req, res) => {
+  res.render("create");
+});
+
+app.listen(5001, () => {
+  console.log("Server is running on port 5001");
+});
+
+

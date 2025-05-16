@@ -3,27 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login – Tripsy</title>
+  <title>Sign Up – Tripsy</title>
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
   <div id="content-signup">
-    <img src="/images/logo.png" alt="Tripsy Logo" class="login-logo" />
-    <h1>Welcome to Tripsy!</h1>
+    <h1>Sign Up</h1>
     <% if (typeof error !== 'undefined') { %>
       <p style="color:red;"><%= error %></p>
     <% } %>
-    <form class="auth-form" action="/login" method="post">
+    <form class="auth-form" action="/register" method="post">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" name="firstName" required />
+
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" name="lastName" required />
+
       <label for="username">Username</label>
       <input type="text" id="username" name="username" required />
 
       <label for="password">Password</label>
       <input type="password" id="password" name="password" required />
 
-      <button type="submit">Log In</button>
+      <button type="submit">Create Account</button>
     </form>
-    <p class = "signup-redirect">Don't have an account? <a href="/register">Sign up</a></p>
+    <p>Already have an account? <a href="/login">Log in</a></p>
   </div>
 </body>
 </html>
